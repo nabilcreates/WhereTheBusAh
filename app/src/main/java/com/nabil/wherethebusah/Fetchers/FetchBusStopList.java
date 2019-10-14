@@ -23,11 +23,9 @@ import okhttp3.Response;
 public class FetchBusStopList extends AsyncTask<Void, Void, JSONArray> {
     String API_URL = "https://raw.githubusercontent.com/nabilcreates/BusService/master/data/object_name_code.json";
     Activity activity;
-    List<String> bus_stop_names = new ArrayList<String>();
-    List<String> bus_stop_codes = new ArrayList<String>();
     JSONArray results;
 
-    public FetchBusStopList(Activity activity){
+    public FetchBusStopList(Activity activity) {
         this.activity = activity;
     }
 
@@ -47,10 +45,10 @@ public class FetchBusStopList extends AsyncTask<Void, Void, JSONArray> {
                 .url(API_URL)
                 .build();
 
-        try{
+        try {
             Response response = client.newCall(request).execute();
             r = new JSONArray(response.body().string());
-        }catch (JSONException | IOException e){
+        } catch (JSONException | IOException e) {
             Log.e(this.getClass().getSimpleName(), e.toString());
         }
 
@@ -59,7 +57,7 @@ public class FetchBusStopList extends AsyncTask<Void, Void, JSONArray> {
 
     @Override
     protected void onPostExecute(JSONArray r) {
-        if(r != null){
+        if (r != null) {
 
             // VISIBILITY:
             activity.findViewById(R.id.parent_layout).setVisibility(View.VISIBLE);
@@ -70,7 +68,7 @@ public class FetchBusStopList extends AsyncTask<Void, Void, JSONArray> {
         }
     }
 
-    public void setAdapter(JSONArray results){
+    public void setAdapter(JSONArray results) {
         ((ListView) activity.findViewById(R.id.bus_stop_list_view)).setAdapter(new BusStopListAdapter(activity, results));
     }
 

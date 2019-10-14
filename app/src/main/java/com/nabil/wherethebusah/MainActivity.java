@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         fetchBusStopList_init.execute();
 
-
         // ListView listener
         busStopList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -76,6 +75,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
+
+        // TODO: Implement Settings page!
+
         return true;
     }
 
