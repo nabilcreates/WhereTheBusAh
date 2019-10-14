@@ -3,8 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/search_menu"
+        android:title="@string/search_input_text"
         app:showAsAction="always"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings_black_24dp"
+        android:showAsAction="always"
+        app:actionViewClass="android.widget.SearchView"
         />
+
+
+<!--    TODO: Implement search here-->
+<!--    <item-->
+<!--        app:showAsAction="always"-->
+<!--        android:title="Settings"-->
+<!--        android:icon="@drawable/ic_settings_black_24dp"-->
+<!--        />-->
+
+
 </menu>

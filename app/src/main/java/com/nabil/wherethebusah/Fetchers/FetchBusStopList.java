@@ -3,6 +3,7 @@ package com.nabil.wherethebusah.Fetchers;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.nabil.wherethebusah.Adapters.BusStopListAdapter;
@@ -10,7 +11,6 @@ import com.nabil.wherethebusah.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +29,13 @@ public class FetchBusStopList extends AsyncTask<Void, Void, JSONArray> {
 
     public FetchBusStopList(Activity activity){
         this.activity = activity;
+    }
+
+    @Override
+    protected void onPreExecute() {
+        // VISIBILITY:
+        activity.findViewById(R.id.parent_layout).setVisibility(View.INVISIBLE);
+        activity.findViewById(R.id.bus_stop_list_progressbar).setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -53,6 +60,11 @@ public class FetchBusStopList extends AsyncTask<Void, Void, JSONArray> {
     @Override
     protected void onPostExecute(JSONArray r) {
         if(r != null){
+
+            // VISIBILITY:
+            activity.findViewById(R.id.parent_layout).setVisibility(View.VISIBLE);
+            activity.findViewById(R.id.bus_stop_list_progressbar).setVisibility(View.INVISIBLE);
+
             setAdapter(r);
             results = r;
         }

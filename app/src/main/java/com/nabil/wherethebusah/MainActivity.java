@@ -1,17 +1,21 @@
 package com.nabil.wherethebusah;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.nabil.wherethebusah.Fetchers.FetchBusStopList;
@@ -43,12 +47,13 @@ public class MainActivity extends AppCompatActivity {
 
         fetchBusStopList_init.execute();
 
-        // TODO: Create a new activity or fragment to allow search
 
+        // ListView listener
         busStopList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String temp_bus_stop_code = ((TextView) view.findViewById(R.id.list_bus_stop_code)).getText().toString();
+                String temp_bus_stop_name = ((TextView) view.findViewById(R.id.list_bus_stop_name)).getText().toString();
 
                 Intent to_timing = new Intent(getApplicationContext(), BusTimingActivity.class)
                         .putExtra("busStopCode", temp_bus_stop_code);
@@ -56,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(to_timing);
             }
         });
-
-        /* TODO:  Get the data from the fetcher
-         * Make your own search function (if search matches busstopname, return it) */
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater = new MenuInflater(getApplicationContext());
-        menuInflater.inflate(R.menu.main_menu, menu);
+        getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
     }
 
