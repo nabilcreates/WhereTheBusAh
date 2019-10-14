@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/color_black</item>
     </style>
 
     <style name="bus_stop_name_list_style" parent="TextAppearance.AppCompat">

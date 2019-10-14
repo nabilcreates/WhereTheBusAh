@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.nabil.wherethebusah.R;
@@ -65,15 +66,15 @@ public class BusTimingsAdapter extends BaseAdapter {
             // TODO: make methods to parse the data below to be human-readable
             ((TextView) convertView.findViewById(R.id.list_timing_next_timing)).setText(parseMs(item.getJSONObject("next").getInt("duration_ms")));
             ((TextView) convertView.findViewById(R.id.list_timing_next_type)).setText(parseType(item.getJSONObject("next").getString("type")));
-            ((TextView) convertView.findViewById(R.id.list_timing_next_load)).setText(item.getJSONObject("next").getString("load"));
+            ((ProgressBar) convertView.findViewById(R.id.list_timing_next_load_progressbar)).setProgress(parseLoad(item.getJSONObject("next").getString("load")));
 
             ((TextView) convertView.findViewById(R.id.list_timing_next2_timing)).setText(parseMs(item.getJSONObject("next2").getInt("duration_ms")));
             ((TextView) convertView.findViewById(R.id.list_timing_next2_type)).setText(parseType(item.getJSONObject("next2").getString("type")));
-            ((TextView) convertView.findViewById(R.id.list_timing_next2_load)).setText(item.getJSONObject("next2").getString("load"));
+            ((ProgressBar) convertView.findViewById(R.id.list_timing_next2_load_progressbar)).setProgress(parseLoad(item.getJSONObject("next2").getString("load")));
 
             ((TextView) convertView.findViewById(R.id.list_timing_next3_timing)).setText(parseMs(item.getJSONObject("next3").getInt("duration_ms")));
             ((TextView) convertView.findViewById(R.id.list_timing_next3_type)).setText(parseType(item.getJSONObject("next3").getString("type")));
-            ((TextView) convertView.findViewById(R.id.list_timing_next3_load)).setText(item.getJSONObject("next3").getString("load"));
+            ((ProgressBar) convertView.findViewById(R.id.list_timing_next3_load_progressbar)).setProgress(parseLoad(item.getJSONObject("next3").getString("load")));
         } catch (JSONException e) {
             Log.e(this.getClass().getSimpleName(), e.toString());
         }
@@ -104,6 +105,19 @@ public class BusTimingsAdapter extends BaseAdapter {
 
             default:
                 return default_unknown_string;
+        }
+    }
+
+    public int parseLoad(String load) {
+        switch (load) {
+            case "SEA":
+                return 100 / 3;
+            case "SDA":
+                return 50;
+            case "LSD":
+                return 100;
+            default:
+                return 0;
         }
     }
 }
