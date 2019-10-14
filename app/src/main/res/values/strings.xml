@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WhereTheBusAh</string>
+    <string name="search_input_text">Search</string>
+    <string name="search_button_text">Search</string>
+</resources>
