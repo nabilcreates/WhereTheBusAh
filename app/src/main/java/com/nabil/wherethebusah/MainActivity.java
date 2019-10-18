@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 String temp_bus_stop_name = ((TextView) view.findViewById(R.id.list_bus_stop_name)).getText().toString();
 
                 Intent to_timing = new Intent(getApplicationContext(), BusTimingActivity.class)
-                        .putExtra("busStopCode", temp_bus_stop_code);
+                        .putExtra("busStopCode", temp_bus_stop_code)
+                        .putExtra("busStopName", temp_bus_stop_name);
 
                 startActivity(to_timing);
             }

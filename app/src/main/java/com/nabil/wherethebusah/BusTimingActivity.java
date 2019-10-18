@@ -19,6 +19,7 @@ public class BusTimingActivity extends AppCompatActivity {
 
     SharedPreferences sp;
     String bus_stop_code;
+    String bus_stop_name;
 
     @Override
     protected void onCreate (Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class BusTimingActivity extends AppCompatActivity {
 
 
         bus_stop_code = getIntent ().getStringExtra ("busStopCode");
+        bus_stop_name = getIntent ().getStringExtra ("busStopName");
 
         if (bus_stop_code != null) {
             new FetchBusTimings (BusTimingActivity.this).execute (bus_stop_code);
@@ -46,8 +48,9 @@ public class BusTimingActivity extends AppCompatActivity {
                 new FetchBusTimings (BusTimingActivity.this).execute (bus_stop_code);
                 return true;
             case R.id.favourite:
-                // Write the sharedPreferences
-                new FavouritesHandler (BusTimingActivity.this).addBusStop(bus_stop_code);
+                new FavouritesHandler (BusTimingActivity.this).addBusStop(bus_stop_name, bus_stop_code);
+                System.out.println (new FavouritesHandler (BusTimingActivity.this).getFavourites ());
+                System.out.println (new FavouritesHandler (BusTimingActivity.this).getFavourites ().length ());
                 return true;
             default:
                 return false;
