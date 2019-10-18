@@ -1,5 +1,6 @@
 package com.nabil.wherethebusah;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
@@ -82,23 +83,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        // TODO: Remove this from future release (implement a delete feature)
-        ((Button) findViewById (R.id.delete_all_favourites)).setOnClickListener (new View.OnClickListener () {
-            @Override
-            public void onClick (View v) {
-                getSharedPreferences (getPackageName (), MODE_PRIVATE).edit ().clear ().apply ();
-            }
-        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
-        // TODO: Implement Settings page!
-
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (@NonNull MenuItem item) {
+        if(item.getItemId () == R.id.setting_menu){
+            startActivity(new Intent (MainActivity.this, SettingsActivity.class));
+            return true;
+        }else{
+            return false;
+        }
     }
 
     // setadapter with the data
