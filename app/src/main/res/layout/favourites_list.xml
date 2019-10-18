@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        style="@style/bus_stop_name_list_style"
+        style="@style/bold_black_text"
         android:id="@+id/list_favourites_bus_stop_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

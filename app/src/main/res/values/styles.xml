@@ -9,9 +9,18 @@
         <item name="android:textColor">@color/color_black</item>
     </style>
 
-    <style name="bus_stop_name_list_style" parent="TextAppearance.AppCompat">
-        <item name="android:textSize">20sp</item>
-        <item name="android:color">@color/color_black</item>
+    <style name="bold_black_text" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/color_black</item>
+    </style>
+
+    <style name="bus_timings_progress_bar_style" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="grey_text" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/color_grey</item>
     </style>
 
 </resources>

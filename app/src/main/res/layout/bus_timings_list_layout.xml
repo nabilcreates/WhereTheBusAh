@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="3dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
@@ -8,13 +9,13 @@
         android:layout_gravity="center"
         android:textAlignment="center"
         android:id="@+id/list_timing_bus_no"
+        style="@style/bold_black_text"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/default_unknown_string" />
 
     <LinearLayout
-        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -27,22 +28,22 @@
             android:layout_height="match_parent"
             android:text="@string/default_unknown_string" />
 
+
+        <ProgressBar
+            android:id="@+id/list_timing_next_load_progressbar"
+            style="@style/bus_timings_progress_bar_style"
+            android:layout_height="match_parent" />
+
         <TextView
             android:textAlignment="center"
             android:id="@+id/list_timing_next_type"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            style="@style/grey_text"
             android:text="@string/default_unknown_string" />
-
-        <ProgressBar
-            android:id="@+id/list_timing_next_load_progressbar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
-        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -55,22 +56,22 @@
             android:layout_height="match_parent"
             android:text="@string/default_unknown_string" />
 
+
+        <ProgressBar
+            android:id="@+id/list_timing_next2_load_progressbar"
+            style="@style/bus_timings_progress_bar_style"
+            android:layout_height="match_parent" />
+
         <TextView
             android:textAlignment="center"
             android:id="@+id/list_timing_next2_type"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            style="@style/grey_text"
             android:text="@string/default_unknown_string" />
-
-        <ProgressBar
-            android:id="@+id/list_timing_next2_load_progressbar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
     <LinearLayout
-        android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -83,18 +84,19 @@
             android:layout_height="match_parent"
             android:text="@string/default_unknown_string" />
 
+
+        <ProgressBar
+            android:id="@+id/list_timing_next3_load_progressbar"
+            style="@style/bus_timings_progress_bar_style"
+            android:layout_height="match_parent" />
+
         <TextView
             android:textAlignment="center"
             android:id="@+id/list_timing_next3_type"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            style="@style/grey_text"
             android:text="@string/default_unknown_string" />
-
-        <ProgressBar
-            android:id="@+id/list_timing_next3_load_progressbar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>
