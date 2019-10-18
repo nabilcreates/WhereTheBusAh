@@ -36,28 +36,22 @@ public class FavouritesHandler {
         // Illegal to "add item" to shared preferences... read this: https://stackoverflow.com/a/21401062 , so we create a temp which creates a new hashset which contains the current_set values and add to it
         JSONArray temp = new JSONArray ();
         JSONObject bus_stop_object = new JSONObject ();
-
-        // This is the truthy to decide if the object can be pushed or not, the truthy depends on the if-conditions below
         Boolean canPush = false;
 
         try {
             temp = new JSONArray (get_current_favourites.toString ());
 
-            // Try to loop
             for(int i = 0; i < temp.length (); i++){
 
                 // Check for duplicates
                 String condition = temp.getJSONObject (i).getString ("bus_stop_code");
                 if(!condition.equals (bus_stop_code)){
-                    // Truthy is true
                     canPush = true;
                 }
             }
 
             // Check if its empty
             if(temp.length () == 0){
-
-                // Truthy is true
                 canPush = true;
             }
 
