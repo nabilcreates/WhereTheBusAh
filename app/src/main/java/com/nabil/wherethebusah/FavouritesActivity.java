@@ -8,6 +8,8 @@ import android.util.ArraySet;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.nabil.wherethebusah.Handlers.FavouritesHandler;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -19,27 +21,22 @@ public class FavouritesActivity extends AppCompatActivity {
 
     // TODO: Implement favourites via sharedpreferences
     ListView listFavourites;
-    SharedPreferences sp;
-    List<String> converted = new ArrayList<>();
+    List<String> converted_for_adapter = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
-        sp = getSharedPreferences("com.nabil.wherethebusah", MODE_PRIVATE);
         listFavourites = findViewById(R.id.list_favourites);
 
-        Iterator i = sp.getStringSet("favouritesSet", new HashSet<String>()).iterator();
+        Iterator i = new FavouritesHandler (FavouritesActivity.this).getFavourites_set ().iterator ();
 
-        while(i.hasNext()){
-            converted.add(i.next().toString());
+        while(i.hasNext ()){
+            converted_for_adapter.add(i.next ().toString ());
         }
 
-        System.out.println(converted);
-
-        // listFavourites.setAdapter(new ArrayAdapter(getApplicationContext(), R.layout.favourites_list,));
-
-
+        // Sets dont work with adapter, so we add every value to a List
+        listFavourites.setAdapter (new ArrayAdapter(getApplicationContext (), R.layout.favourites_list, converted_for_adapter));
     }
 }

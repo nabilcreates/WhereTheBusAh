@@ -21,34 +21,33 @@ public class BusTimingActivity extends AppCompatActivity {
     String bus_stop_code;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_timing);
+    protected void onCreate (Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
+        setContentView (R.layout.activity_timing);
 
 
-        bus_stop_code = getIntent().getStringExtra("busStopCode");
+        bus_stop_code = getIntent ().getStringExtra ("busStopCode");
 
         if (bus_stop_code != null) {
-            new FetchBusTimings(BusTimingActivity.this).execute(bus_stop_code);
+            new FetchBusTimings (BusTimingActivity.this).execute (bus_stop_code);
         }
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.timing_menu, menu);
+    public boolean onCreateOptionsMenu (Menu menu) {
+        getMenuInflater ().inflate (R.menu.timing_menu, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected (@NonNull MenuItem item) {
+        switch (item.getItemId ()) {
             case R.id.refresh_menu_button:
-                new FetchBusTimings(BusTimingActivity.this).execute(bus_stop_code);
+                new FetchBusTimings (BusTimingActivity.this).execute (bus_stop_code);
                 return true;
             case R.id.favourite:
-                System.out.println(new FavouritesHandler(BusTimingActivity.this).getFavourites_set());
-                new FavouritesHandler(BusTimingActivity.this).addBusStop(bus_stop_code);
-                System.out.println(new FavouritesHandler(BusTimingActivity.this).getFavourites_set());
+                // Write the sharedPreferences
+                new FavouritesHandler (BusTimingActivity.this).addBusStop(bus_stop_code);
                 return true;
             default:
                 return false;
