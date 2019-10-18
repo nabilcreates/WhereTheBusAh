@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
 
         fetchBusStopList_init.execute();
 
+        // TODO: Remove before deploying!
+        getSharedPreferences (getPackageName (), MODE_PRIVATE).edit ().clear ().apply ();
+
         // ListView listener
         busStopList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
