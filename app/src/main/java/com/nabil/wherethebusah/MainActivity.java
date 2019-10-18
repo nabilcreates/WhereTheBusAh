@@ -86,6 +86,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart () {
+        super.onStart ();
+        
+        searchInput.setText ("");
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
