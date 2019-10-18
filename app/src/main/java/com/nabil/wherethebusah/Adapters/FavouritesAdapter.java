@@ -14,6 +14,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.util.HashSet;
+
 public class FavouritesAdapter extends BaseAdapter {
 
     JSONArray data;
@@ -22,6 +24,8 @@ public class FavouritesAdapter extends BaseAdapter {
     public FavouritesAdapter(Activity _activity, JSONArray _data){
         this.data = _data;
         this.activity = _activity;
+
+        System.out.println (this.data);
     }
 
     @Override

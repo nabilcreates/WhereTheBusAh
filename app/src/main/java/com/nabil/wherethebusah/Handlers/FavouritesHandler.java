@@ -36,19 +36,37 @@ public class FavouritesHandler {
         // Illegal to "add item" to shared preferences... read this: https://stackoverflow.com/a/21401062 , so we create a temp which creates a new hashset which contains the current_set values and add to it
         JSONArray temp = new JSONArray ();
         JSONObject bus_stop_object = new JSONObject ();
+        Boolean canPush = false;
 
         try {
             temp = new JSONArray (get_current_favourites.toString ());
-            bus_stop_object = new JSONObject ()
-                    .put ("bus_stop_name", bus_stop_name)
-                    .put ("bus_stop_code", bus_stop_code);
+
+            for(int i = 0; i < temp.length (); i++){
+
+                // Check for duplicates
+                String condition = temp.getJSONObject (i).getString ("bus_stop_code");
+                if(!condition.equals (bus_stop_code)){
+                    canPush = true;
+                }
+            }
+
+            // Check if its empty
+            if(temp.length () == 0){
+                canPush = true;
+            }
+
+            if(canPush){
+                bus_stop_object = new JSONObject ()
+                        .put ("bus_stop_name", bus_stop_name)
+                        .put ("bus_stop_code", bus_stop_code);
+
+                temp.put (bus_stop_object);
+                writeToSP (temp);
+            }
 
         } catch (JSONException e) {
             e.printStackTrace ();
         }
-
-        temp.put (bus_stop_object);
-        writeToSP (temp);
     }
 
     public void writeToSP (JSONArray data_to_put) {

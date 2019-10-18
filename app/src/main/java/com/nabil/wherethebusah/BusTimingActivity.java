@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.ArraySet;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.nabil.wherethebusah.Fetchers.FetchBusTimings;
 import com.nabil.wherethebusah.Handlers.FavouritesHandler;
@@ -49,8 +50,9 @@ public class BusTimingActivity extends AppCompatActivity {
                 return true;
             case R.id.favourite:
                 new FavouritesHandler (BusTimingActivity.this).addBusStop(bus_stop_name, bus_stop_code);
-                System.out.println (new FavouritesHandler (BusTimingActivity.this).getFavourites ());
-                System.out.println (new FavouritesHandler (BusTimingActivity.this).getFavourites ().length ());
+
+                // Show a toast to notify that it is added to favourites
+                Toast.makeText (getApplicationContext (), "Added to Favourites!", Toast.LENGTH_LONG).show ();
                 return true;
             default:
                 return false;
