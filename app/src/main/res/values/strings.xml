@@ -4,4 +4,7 @@
     <string name="search_button_text">Search</string>
     <string name="default_unknown_string">Unknown</string>
     <string name="default_no_favourites_string">No favourites! Add one by clicking the star icon when looking at the bus timings!</string>
+
+<!--    TODO: Remove this (Implement a delete feature-->
+    <string name="delete_all_favourites_text">DELETE ALL FAVOURITES (USE WITH CAUTION)</string>
 </resources>

@@ -15,15 +15,26 @@
 
     <LinearLayout
         android:id="@+id/parent_layout"
-        android:visibility="invisible"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="match_parent">
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <!--    TODO: Remove this from future release (implement a delete feature)-->
+
+            <Button
+                android:id="@+id/delete_all_favourites"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/delete_all_favourites_text" />
 
             <EditText
                 android:id="@+id/search_input"

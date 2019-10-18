@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         fetchBusStopList_init.execute();
 
-        // TODO: Comment out before deploying!
-        // getSharedPreferences (getPackageName (), MODE_PRIVATE).edit ().clear ().apply ();
-
         // ListView listener
         busStopList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,6 +80,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), FavouritesActivity.class);
                 startActivity(i);
+            }
+        });
+
+        // TODO: Remove this from future release (implement a delete feature)
+        ((Button) findViewById (R.id.delete_all_favourites)).setOnClickListener (new View.OnClickListener () {
+            @Override
+            public void onClick (View v) {
+                getSharedPreferences (getPackageName (), MODE_PRIVATE).edit ().clear ().apply ();
             }
         });
     }
