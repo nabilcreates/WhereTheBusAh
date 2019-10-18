@@ -63,7 +63,6 @@ public class BusTimingsAdapter extends BaseAdapter {
             ((TextView) convertView.findViewById(R.id.list_timing_bus_no)).setText(item.getString("no"));
 
 
-            // TODO: make methods to parse the data below to be human-readable
             ((TextView) convertView.findViewById(R.id.list_timing_next_timing)).setText(parseMs(item.getJSONObject("next").getInt("duration_ms")));
             ((TextView) convertView.findViewById(R.id.list_timing_next_type)).setText(parseType(item.getJSONObject("next").getString("type")));
             ((ProgressBar) convertView.findViewById(R.id.list_timing_next_load_progressbar)).setProgress(parseLoad(item.getJSONObject("next").getString("load")));

@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView busStopList;
     FetchBusStopList fetchBusStopList_init;
-    Button searchButton;
+    Button searchButton, favouritesButton;
     EditText searchInput;
 
     @Override
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fetchBusStopList_init = new FetchBusStopList(MainActivity.this);
+        favouritesButton = findViewById(R.id.favourites_button);
         searchButton = findViewById(R.id.search_button);
         searchInput = findViewById(R.id.search_input);
         busStopList = findViewById(R.id.bus_stop_list_view);
@@ -64,10 +65,20 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                // Handle search
                 JSONArray bus_stop_data = fetchBusStopList_init.getResults();
                 String search_string = searchInput.getText().toString();
                 System.out.println(filterFunction(search_string, bus_stop_data));
                 fetchBusStopList_init.setAdapter(filterFunction(search_string, bus_stop_data));
+            }
+        });
+
+        favouritesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FavouritesActivity.class);
+                startActivity(i);
             }
         });
     }

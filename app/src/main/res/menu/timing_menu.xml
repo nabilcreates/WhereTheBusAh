@@ -7,4 +7,11 @@
         android:title="Refresh"
         android:icon="@drawable/ic_refresh_black_24dp"
         />
+
+    <item
+        android:id="@+id/favourite"
+        app:showAsAction="always"
+        android:title="Favourite"
+        android:icon="@drawable/ic_star_black_24dp"
+        />
 </menu>
